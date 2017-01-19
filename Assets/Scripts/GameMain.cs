@@ -11,6 +11,7 @@ public class GameMain : MonoBehaviour
     Coroutine mainLoop;
     Coroutine animateWaves;
     int numberOfWaves = 3;
+    float laneSize = 1f;
 
     void Awake()
     {
@@ -29,10 +30,10 @@ public class GameMain : MonoBehaviour
 
     private IEnumerator MainLoop()
     {
+        //Animate waves
+        animateWaves = StartCoroutine(AnimateWaves());
         while (true)
         {
-            //Animate waves
-            animateWaves = StartCoroutine(AnimateWaves());
             yield return new WaitForSeconds(.01f);
         }
     }
@@ -40,11 +41,17 @@ public class GameMain : MonoBehaviour
     private IEnumerator AnimateWaves()
     {
         //Create waves
-
-
+        for (int i = 0; i < numberOfWaves; i++)
+        {
+            Waves.Add("Wave" + (i+1), Instantiate(PrefabManager.Script.Wave, PrefabManager.Script.Wave.transform.position + new Vector3(0, 0, laneSize * i), PrefabManager.Script.Wave.transform.rotation, LevelMap).GetComponent<Wave>());
+        }
+        //Animate waves
         while (true)
         {
-
+            foreach (Wave wave in Waves.Values)
+            {
+                //wave.transform.Translate()
+            }
             yield return new WaitForSeconds(.01f);
         }
     }
