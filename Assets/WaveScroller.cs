@@ -6,7 +6,6 @@ public class WaveScroller : MonoBehaviour {
 
 
     public float speed = 1.0f;
-    public float rockingStrength = 1.0f;
 
     // Use this for initialization
     void Start () {
