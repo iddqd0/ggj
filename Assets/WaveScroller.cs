@@ -13,8 +13,6 @@ public class WaveScroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // shift backwards n pixels every pace time for duration
-        
         GetComponent<Renderer>().material.mainTextureOffset = new Vector2(Time.time * speed, 0);
     }
 }
